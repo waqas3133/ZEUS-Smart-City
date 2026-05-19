@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "376711787348",
+    "project_id": "zeus-smart-city",
+    "storage_bucket": "zeus-smart-city.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:376711787348:android:1c25e5c3d12413b6290ec1",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUxSaxP2WkI_r9qlbfDnc7v0Yr-EqbkSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
