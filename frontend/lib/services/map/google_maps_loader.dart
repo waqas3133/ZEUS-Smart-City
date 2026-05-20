@@ -1,24 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
-import 'dart:js_interop';
 import 'dart:developer' as developer;
+import '../web_utils/web_utils.dart';
 
 enum GoogleMapsLoadStatus {
   loading,
   loaded,
   error,
-}
-
-// Extension to access window/global properties safely
-extension GlobalMapsExtension on JSObject {
-  external JSObject? get google;
-  external void loadGoogleMapsSdk(JSString apiKey);
-  external set onGoogleMapsLoaded(JSFunction callback);
-  external set onGoogleMapsLoadError(JSFunction callback);
-}
-
-extension GoogleMapsObjectExtension on JSObject {
-  external JSObject? get maps;
 }
 
 class GoogleMapsLoader extends Notifier<GoogleMapsLoadStatus> {
@@ -46,20 +34,18 @@ class GoogleMapsLoader extends Notifier<GoogleMapsLoadStatus> {
     developer.log("Initializing Google Maps script dynamic load listeners...");
 
     try {
-      // Register web callbacks on globalContext
-      globalContext.onGoogleMapsLoaded = (() {
-        developer.log("Google Maps loaded callback received from browser.");
-        state = GoogleMapsLoadStatus.loaded;
-      }).toJS;
-
-      globalContext.onGoogleMapsLoadError = (() {
-        developer.log("Google Maps failed to load callback received from browser.");
-        state = GoogleMapsLoadStatus.error;
-      }).toJS;
-
-      // Call global JS loader defined in index.html
       const apiKey = 'AIzaSyAqdk4QSDbGIsmJ36Q3jb7ZRrSLvM9CFhQ';
-      globalContext.loadGoogleMapsSdk(apiKey.toJS);
+      loadGoogleMapsSdkWeb(
+        apiKey,
+        () {
+          developer.log("Google Maps loaded callback received from browser.");
+          state = GoogleMapsLoadStatus.loaded;
+        },
+        () {
+          developer.log("Google Maps failed to load callback received from browser.");
+          state = GoogleMapsLoadStatus.error;
+        },
+      );
     } catch (e) {
       developer.log("Failed to register callbacks or call script loader: $e");
       state = GoogleMapsLoadStatus.error;
@@ -77,14 +63,7 @@ class GoogleMapsLoader extends Notifier<GoogleMapsLoadStatus> {
   /// Internal utility to verify if window.google.maps namespace is available
   bool _isSdkLoaded() {
     if (!kIsWeb) return true;
-    try {
-      final google = globalContext.google;
-      if (google == null) return false;
-      final maps = google.maps;
-      return maps != null;
-    } catch (e) {
-      return false;
-    }
+    return isGoogleMapsSdkLoaded();
   }
 }
 

@@ -3,33 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:developer' as developer;
 import 'package:flutter/foundation.dart' show kIsWeb;
-import 'dart:js_interop';
-
-// Extensions on JSObject to query properties safely
-extension FCMBrowserExtension on JSObject {
-  external JSObject? get navigator;
-  external JSObject? get PushManager;
-}
-
-extension FCMNavigatorExtension on JSObject {
-  external JSObject? get serviceWorker;
-}
-
-/// Helper to check if browser supports push notifications and service workers
-bool isPushSupported() {
-  if (!kIsWeb) return true;
-  try {
-    final navigator = globalContext.navigator;
-    if (navigator == null) return false;
-    final serviceWorker = navigator.serviceWorker;
-    if (serviceWorker == null) return false;
-    
-    final pushManager = globalContext.PushManager;
-    return pushManager != null;
-  } catch (e) {
-    return false;
-  }
-}
+import '../web_utils/web_utils.dart';
 
 class FirebaseService {
   static final FirebaseService _instance = FirebaseService._internal();
