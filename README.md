@@ -20,7 +20,7 @@ The platform is designed to run seamlessly across **Flutter Web, Android, iOS**,
 
 ```mermaid
 graph TD
-    A[Flutter App / Web Client] -->|HTTP / WebSockets| B[FastAPI Backend - Hugging Face]
+    A[Flutter App / Web Client] -->|HTTP / WebSockets| B[FastAPI Backend - Render]
     A -->|Auth & DB| C[Google Firebase]
     A -->|Tile Rendering| D[Google Maps SDK]
     B -->|Predictive Intelligence| E[Vision & Weather Swarms]
@@ -42,8 +42,8 @@ Create a `.env` file inside the `frontend` or root directory with the following 
 GOOGLE_MAPS_API_KEY="AIzaSy..."
 
 # API Endpoints
-ZEUS_BACKEND_BASE_URL="https://waqas3133-zeus-smart-city-backend.hf.space"
-ZEUS_BACKEND_WS_URL="wss://waqas3133-zeus-smart-city-backend.hf.space"
+ZEUS_BACKEND_BASE_URL="https://zeus-smart-city.onrender.com"
+ZEUS_BACKEND_WS_URL="wss://zeus-smart-city.onrender.com"
 ```
 
 ---
@@ -76,14 +76,11 @@ Then update `frontend/lib/core/constants/api_constants.dart` to point to `http:/
 
 ## 🌐 Production Deployment
 
-### 1. Backend (Hugging Face Spaces)
-The backend is configured to build automatically via Hugging Face Docker Spaces:
-* Live API Base URL: `https://waqas3133-zeus-smart-city-backend.hf.space`
+### 1. Backend (Render)
+The backend is configured to build and deploy automatically via Render:
+* Live API Base URL: `https://zeus-smart-city.onrender.com`
 
-To deploy updates, push to the spaces repository:
-```bash
-git push hf main
-```
+To deploy updates, push to the connected git repository.
 
 ### 2. Flutter Web Hosting
 Build and release the production web bundle:
