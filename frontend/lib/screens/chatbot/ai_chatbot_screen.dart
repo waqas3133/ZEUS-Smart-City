@@ -91,7 +91,12 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
     _scrollToBottom();
     _textController.clear();
 
-    final dio = Dio();
+    final dio = Dio(BaseOptions(
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json',
+      },
+    ));
     try {
       final response = await dio.post(
         '${ApiConstants.baseUrl}/chatbot/query',

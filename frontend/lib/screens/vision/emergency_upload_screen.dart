@@ -72,7 +72,11 @@ class _EmergencyUploadScreenState extends ConsumerState<EmergencyUploadScreen> {
       _isAnalyzing = true;
     });
 
-    final dio = Dio();
+    final dio = Dio(BaseOptions(
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+      },
+    ));
     final storageService = FirebaseStorageService();
     final firestoreService = FirestoreService();
     String? storageUrl;
