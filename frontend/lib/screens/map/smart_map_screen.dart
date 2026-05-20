@@ -10,6 +10,8 @@ import '../../widgets/traffic/traffic_overlay_widget.dart';
 import '../../widgets/traffic/route_simulation_widget.dart';
 import '../../widgets/traffic/emergency_route_widget.dart';
 import '../../providers/demo_playbook_provider.dart';
+import '../../services/map/google_maps_loader.dart';
+import '../../widgets/map/map_loading_skeleton.dart';
 
 class SmartMapScreen extends ConsumerStatefulWidget {
   const SmartMapScreen({super.key});
@@ -279,6 +281,7 @@ class _SmartMapScreenState extends ConsumerState<SmartMapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mapLoadStatus = ref.watch(googleMapsLoaderProvider);
     ref.listen(demoPlaybookProvider, (previous, next) {
       if (next?.currentStepIndex == 3) {
         if (!_isSimulating) {
@@ -296,17 +299,26 @@ class _SmartMapScreenState extends ConsumerState<SmartMapScreen> {
       body: Stack(
         children: [
           // Dark Google Map
-          GoogleMap(
-            initialCameraPosition: const CameraPosition(
-              target: LatLng(33.6950, 73.0650),
-              zoom: 13.0,
+          if (mapLoadStatus == GoogleMapsLoadStatus.loaded)
+            GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(33.6950, 73.0650),
+                zoom: 13.0,
+              ),
+              onMapCreated: _onMapCreated,
+              markers: _markers,
+              circles: _circles,
+              polylines: _polylines,
+              myLocationButtonEnabled: false,
+            )
+          else
+            MapLoadingSkeleton(
+              hasError: mapLoadStatus == GoogleMapsLoadStatus.error,
+              onRetry: () {
+                _triggerRoutingAnalysis();
+                ref.read(googleMapsLoaderProvider.notifier).retry();
+              },
             ),
-            onMapCreated: _onMapCreated,
-            markers: _markers,
-            circles: _circles,
-            polylines: _polylines,
-            myLocationButtonEnabled: false,
-          ),
 
           // Sliding Panels & Overlays
           Positioned(

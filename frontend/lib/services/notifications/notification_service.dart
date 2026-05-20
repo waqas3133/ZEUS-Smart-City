@@ -1,9 +1,36 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:developer' as developer;
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:js_interop';
+
+// Extensions on JSObject to query properties safely
+extension FCMBrowserExtension on JSObject {
+  external JSObject? get navigator;
+  external JSObject? get PushManager;
+}
+
+extension FCMNavigatorExtension on JSObject {
+  external JSObject? get serviceWorker;
+}
+
+/// Helper to check if browser supports push notifications and service workers
+bool isPushSupported() {
+  if (!kIsWeb) return true;
+  try {
+    final navigator = globalContext.navigator;
+    if (navigator == null) return false;
+    final serviceWorker = navigator.serviceWorker;
+    if (serviceWorker == null) return false;
+    
+    final pushManager = globalContext.PushManager;
+    return pushManager != null;
+  } catch (e) {
+    return false;
+  }
+}
 
 class NotificationService {
   final FirebaseMessaging _fcm = FirebaseMessaging.instance;
@@ -12,6 +39,13 @@ class NotificationService {
   /// Request iOS / Android permissions for premium notification alarms
   Future<void> initializeNotifications() async {
     try {
+      if (kIsWeb) {
+        if (!isPushSupported()) {
+          developer.log("FCM web notifications are not supported in this browser. Skipping permission request.");
+          return;
+        }
+      }
+
       NotificationSettings settings = await _fcm.requestPermission(
         alert: true,
         announcement: false,
@@ -24,13 +58,18 @@ class NotificationService {
 
       developer.log("FCM Permission Status: ${settings.authorizationStatus}");
 
-      // Capture FCM device token
-      String? token = await _fcm.getToken();
-      developer.log("Device FCM Registry Token: $token");
+      // Capture FCM device token safely
+      String? token;
+      try {
+        token = await _fcm.getToken();
+        developer.log("Device FCM Registry Token: $token");
+      } catch (tokenError) {
+        developer.log("Failed to acquire Device FCM Registry Token: $tokenError");
+      }
 
       // Auto-update if user already logged in
       final currentUser = FirebaseAuth.instance.currentUser;
-      if (currentUser != null) {
+      if (currentUser != null && token != null) {
         await saveTokenToFirestore(currentUser.uid);
       }
     } catch (e) {
@@ -41,7 +80,15 @@ class NotificationService {
   /// Saves the FCM token to the user's Firestore document
   Future<void> saveTokenToFirestore(String uid) async {
     try {
-      String? token = await _fcm.getToken();
+      if (kIsWeb && !isPushSupported()) return;
+
+      String? token;
+      try {
+        token = await _fcm.getToken();
+      } catch (e) {
+        developer.log("Could not fetch token to save to Firestore: $e");
+      }
+
       if (token != null) {
         await _db.collection('users').doc(uid).set({
           'fcmToken': token,

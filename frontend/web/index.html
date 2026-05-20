@@ -31,6 +31,66 @@
 
   <title>frontend</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- CanvasKit & Fallback Fonts Configuration -->
+  <script>
+    window.flutterConfiguration = {
+      fontFallbackProviders: []
+    };
+  </script>
+
+  <!-- Google Maps Web Dynamic SDK Loader -->
+  <script>
+    window.loadGoogleMapsSdk = function(apiKey) {
+      if (window.google && window.google.maps) {
+        console.log("Google Maps SDK already loaded.");
+        if (window.onGoogleMapsLoaded) {
+          window.onGoogleMapsLoaded();
+        }
+        return;
+      }
+      
+      var existingScript = document.getElementById('google-maps-sdk');
+      if (existingScript) {
+        existingScript.remove();
+      }
+      
+      var script = document.createElement('script');
+      script.id = 'google-maps-sdk';
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&callback=initGoogleMapsCallback';
+      script.async = true;
+      script.defer = true;
+      script.onerror = function() {
+        console.error("Failed to load Google Maps SDK script.");
+        if (window.onGoogleMapsLoadError) {
+          window.onGoogleMapsLoadError();
+        }
+      };
+      document.head.appendChild(script);
+    };
+
+    window.initGoogleMapsCallback = function() {
+      console.log("Google Maps SDK initialized successfully.");
+      if (window.onGoogleMapsLoaded) {
+        window.onGoogleMapsLoaded();
+      }
+    };
+  </script>
+
+  <!-- Firebase Messaging Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('firebase-messaging-sw.js')
+          .then(function(reg) {
+            console.log('Firebase Service Worker registered scope: ', reg.scope);
+          })
+          .catch(function(err) {
+            console.error('Firebase Service Worker registration failed: ', err);
+          });
+      });
+    }
+  </script>
 </head>
 <body>
   <!--
@@ -44,3 +104,4 @@
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
+

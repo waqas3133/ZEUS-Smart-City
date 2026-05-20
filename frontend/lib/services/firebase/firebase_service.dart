@@ -1,8 +1,35 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'dart:developer' as developer;
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:js_interop';
+
+// Extensions on JSObject to query properties safely
+extension FCMBrowserExtension on JSObject {
+  external JSObject? get navigator;
+  external JSObject? get PushManager;
+}
+
+extension FCMNavigatorExtension on JSObject {
+  external JSObject? get serviceWorker;
+}
+
+/// Helper to check if browser supports push notifications and service workers
+bool isPushSupported() {
+  if (!kIsWeb) return true;
+  try {
+    final navigator = globalContext.navigator;
+    if (navigator == null) return false;
+    final serviceWorker = navigator.serviceWorker;
+    if (serviceWorker == null) return false;
+    
+    final pushManager = globalContext.PushManager;
+    return pushManager != null;
+  } catch (e) {
+    return false;
+  }
+}
 
 class FirebaseService {
   static final FirebaseService _instance = FirebaseService._internal();
@@ -18,6 +45,13 @@ class FirebaseService {
     try {
       developer.log("Initializing Firebase push messaging systems...");
       
+      if (kIsWeb) {
+        if (!isPushSupported()) {
+          developer.log("FCM web push messaging is not supported by this browser. Bypassing messaging setup.");
+          return;
+        }
+      }
+      
       // Request FCM permissions
       NotificationSettings settings = await _messaging.requestPermission(
         alert: true,
@@ -31,9 +65,14 @@ class FirebaseService {
       
       developer.log('User granted FCM permission: ${settings.authorizationStatus}');
 
-      // Fetch FCM Token
-      String? token = await _messaging.getToken();
-      developer.log("FCM Token acquired: $token");
+      // Fetch FCM Token safely
+      String? token;
+      try {
+        token = await _messaging.getToken();
+        developer.log("FCM Token acquired: $token");
+      } catch (tokenError) {
+        developer.log("Failed to acquire FCM Token (e.g. missing VAPID key or SW error): $tokenError");
+      }
 
       // Setup push messaging callbacks
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {

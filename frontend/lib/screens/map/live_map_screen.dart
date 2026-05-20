@@ -5,6 +5,8 @@ import 'package:glassmorphism/glassmorphism.dart';
 import '../../providers/location_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/demo_playbook_provider.dart';
+import '../../services/map/google_maps_loader.dart';
+import '../../widgets/map/map_loading_skeleton.dart';
 
 class LiveMapScreen extends ConsumerStatefulWidget {
   const LiveMapScreen({super.key});
@@ -98,6 +100,7 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final mapLoadStatus = ref.watch(googleMapsLoaderProvider);
     final locationState = ref.watch(locationProvider);
     final position = locationState.position;
     
@@ -208,14 +211,20 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
       body: Stack(
         children: [
           // Google Map
-          GoogleMap(
-            initialCameraPosition: initialCameraPosition,
-            onMapCreated: _onMapCreated,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: false,
-            markers: markers,
-            circles: circles,
-          ),
+          if (mapLoadStatus == GoogleMapsLoadStatus.loaded)
+            GoogleMap(
+              initialCameraPosition: initialCameraPosition,
+              onMapCreated: _onMapCreated,
+              myLocationEnabled: true,
+              myLocationButtonEnabled: false,
+              markers: markers,
+              circles: circles,
+            )
+          else
+            MapLoadingSkeleton(
+              hasError: mapLoadStatus == GoogleMapsLoadStatus.error,
+              onRetry: () => ref.read(googleMapsLoaderProvider.notifier).retry(),
+            ),
 
           // Top Location Bar (Glassmorphic)
           Positioned(
