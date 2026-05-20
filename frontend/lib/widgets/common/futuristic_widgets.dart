@@ -19,14 +19,14 @@ class FuturisticWidgets {
       border: 1.5,
       linearGradient: LinearGradient(
         colors: [
-          glowColor.withOpacity(0.25),
-          glowColor.withOpacity(0.05),
+          glowColor.withValues(alpha: 0.25),
+          glowColor.withValues(alpha: 0.05),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
           glowColor,
-          Colors.white.withOpacity(0.05),
+          Colors.white.withValues(alpha: 0.05),
         ],
       ),
       child: InkWell(
@@ -59,7 +59,7 @@ class FuturisticWidgets {
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.01),
+        color: Colors.white.withValues(alpha: 0.01),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.white10),
       ),
@@ -68,9 +68,9 @@ class FuturisticWidgets {
           Container(
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: statusColor.withOpacity(0.08),
+              color: statusColor.withValues(alpha: 0.08),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: statusColor.withOpacity(0.4)),
+              border: Border.all(color: statusColor.withValues(alpha: 0.4)),
             ),
             child: Icon(icon, color: statusColor, size: 20),
           ),

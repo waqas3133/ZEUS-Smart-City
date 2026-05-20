@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:dio/dio.dart';
-import 'dart:io';
 import 'dart:developer' as developer;
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -289,7 +288,7 @@ class _EmergencyUploadScreenState extends ConsumerState<EmergencyUploadScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(demoPlaybookProvider, (previous, next) {
-      if (next?.currentStepIndex == 4) {
+      if (next.currentStepIndex == 4) {
         _startPlaybookSimulation();
       }
     });
@@ -344,7 +343,7 @@ class _EmergencyUploadScreenState extends ConsumerState<EmergencyUploadScreen> {
                     child: ElevatedButton.icon(
                       onPressed: () => _pickImage(true),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.05),
+                        backgroundColor: Colors.white.withValues(alpha: 0.05),
                         foregroundColor: Colors.white,
                         side: const BorderSide(color: Colors.white12),
                         minimumSize: const Size(0, 48),
@@ -359,7 +358,7 @@ class _EmergencyUploadScreenState extends ConsumerState<EmergencyUploadScreen> {
                     child: ElevatedButton.icon(
                       onPressed: () => _pickImage(false),
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white.withOpacity(0.05),
+                        backgroundColor: Colors.white.withValues(alpha: 0.05),
                         foregroundColor: Colors.white,
                         side: const BorderSide(color: Colors.white12),
                         minimumSize: const Size(0, 48),
@@ -414,14 +413,14 @@ class _EmergencyUploadScreenState extends ConsumerState<EmergencyUploadScreen> {
                   border: 1.5,
                   linearGradient: LinearGradient(
                     colors: [
-                      Colors.black.withOpacity(0.8),
-                      Colors.black.withOpacity(0.6),
+                      Colors.black.withValues(alpha: 0.8),
+                      Colors.black.withValues(alpha: 0.6),
                     ],
                   ),
                   borderGradient: LinearGradient(
                     colors: [
-                      severityColor.withOpacity(0.4),
-                      Colors.white.withOpacity(0.1),
+                      severityColor.withValues(alpha: 0.4),
+                      Colors.white.withValues(alpha: 0.1),
                     ],
                   ),
                   child: Padding(

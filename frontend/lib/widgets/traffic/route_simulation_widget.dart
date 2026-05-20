@@ -27,14 +27,14 @@ class RouteSimulationWidget extends StatelessWidget {
       border: 1,
       linearGradient: LinearGradient(
         colors: [
-          Colors.black.withOpacity(0.8),
-          Colors.black.withOpacity(0.6),
+          Colors.black.withValues(alpha: 0.8),
+          Colors.black.withValues(alpha: 0.6),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
-          const Color(0xFFFF007F).withOpacity(0.2),
-          const Color(0xFF00E5FF).withOpacity(0.2),
+          const Color(0xFFFF007F).withValues(alpha: 0.2),
+          const Color(0xFF00E5FF).withValues(alpha: 0.2),
         ],
       ),
       child: Padding(
@@ -60,7 +60,7 @@ class RouteSimulationWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF00E5FF).withOpacity(0.2),
+                    color: const Color(0xFF00E5FF).withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(
@@ -92,7 +92,7 @@ class RouteSimulationWidget extends StatelessWidget {
                           Expanded(
                             child: LinearProgressIndicator(
                               value: beforeCongestion,
-                              backgroundColor: Colors.white.withOpacity(0.1),
+                              backgroundColor: Colors.white.withValues(alpha: 0.1),
                               color: const Color(0xFFFF007F),
                               minHeight: 6,
                             ),
@@ -111,7 +111,7 @@ class RouteSimulationWidget extends StatelessWidget {
                           Expanded(
                             child: LinearProgressIndicator(
                               value: afterCongestion,
-                              backgroundColor: Colors.white.withOpacity(0.1),
+                              backgroundColor: Colors.white.withValues(alpha: 0.1),
                               color: const Color(0xFF00E5FF),
                               minHeight: 6,
                             ),

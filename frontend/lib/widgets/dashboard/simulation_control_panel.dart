@@ -31,14 +31,14 @@ class _SimulationControlPanelState extends State<SimulationControlPanel> {
       border: 1,
       linearGradient: LinearGradient(
         colors: [
-          Colors.white.withOpacity(0.02),
-          Colors.white.withOpacity(0.005),
+          Colors.white.withValues(alpha: 0.02),
+          Colors.white.withValues(alpha: 0.005),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
-          Colors.white.withOpacity(0.1),
-          Colors.white.withOpacity(0.01),
+          Colors.white.withValues(alpha: 0.1),
+          Colors.white.withValues(alpha: 0.01),
         ],
       ),
       child: Padding(

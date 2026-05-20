@@ -67,9 +67,9 @@ class _MicrophoneAnimationState extends State<MicrophoneAnimation> with SingleTi
                 height: 70 * _glowAnimation.value,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: const Color(0xFF00E5FF).withOpacity(0.15 * (2.0 - _glowAnimation.value)),
+                  color: const Color(0xFF00E5FF).withValues(alpha: 0.15 * (2.0 - _glowAnimation.value)),
                   border: Border.all(
-                    color: const Color(0xFF00E5FF).withOpacity(0.3 * (2.0 - _glowAnimation.value)),
+                    color: const Color(0xFF00E5FF).withValues(alpha: 0.3 * (2.0 - _glowAnimation.value)),
                     width: 2,
                   ),
                 ),
@@ -87,8 +87,8 @@ class _MicrophoneAnimationState extends State<MicrophoneAnimation> with SingleTi
                   boxShadow: [
                     BoxShadow(
                       color: widget.isListening 
-                          ? const Color(0xFFFF007F).withOpacity(0.5) 
-                          : const Color(0xFF00E5FF).withOpacity(0.5),
+                          ? const Color(0xFFFF007F).withValues(alpha: 0.5) 
+                          : const Color(0xFF00E5FF).withValues(alpha: 0.5),
                       blurRadius: widget.isListening ? 20 : 10,
                       spreadRadius: 2,
                     ),

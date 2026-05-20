@@ -48,14 +48,14 @@ class EmergencyPopupWidget extends StatelessWidget {
             border: 2,
             linearGradient: LinearGradient(
               colors: [
-                Colors.black.withOpacity(0.85),
-                Colors.black.withOpacity(0.7),
+                Colors.black.withValues(alpha: 0.85),
+                Colors.black.withValues(alpha: 0.7),
               ],
             ),
             borderGradient: LinearGradient(
               colors: [
                 severityColor,
-                Colors.white.withOpacity(0.1),
+                Colors.white.withValues(alpha: 0.1),
               ],
             ),
             child: Padding(
@@ -84,7 +84,7 @@ class EmergencyPopupWidget extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
-                          color: severityColor.withOpacity(0.15),
+                          color: severityColor.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(8),
                           border: Border.all(color: severityColor, width: 1),
                         ),

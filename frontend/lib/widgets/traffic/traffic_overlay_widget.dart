@@ -39,14 +39,14 @@ class TrafficOverlayWidget extends StatelessWidget {
       border: 1,
       linearGradient: LinearGradient(
         colors: [
-          Colors.black.withOpacity(0.8),
-          Colors.black.withOpacity(0.6),
+          Colors.black.withValues(alpha: 0.8),
+          Colors.black.withValues(alpha: 0.6),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
-          const Color(0xFF00E5FF).withOpacity(0.3),
-          Colors.white.withOpacity(0.1),
+          const Color(0xFF00E5FF).withValues(alpha: 0.3),
+          Colors.white.withValues(alpha: 0.1),
         ],
       ),
       child: Padding(
@@ -60,7 +60,7 @@ class TrafficOverlayWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: _getRiskColor().withOpacity(0.2),
+                    color: _getRiskColor().withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: _getRiskColor()),
                   ),
@@ -77,7 +77,7 @@ class TrafficOverlayWidget extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(

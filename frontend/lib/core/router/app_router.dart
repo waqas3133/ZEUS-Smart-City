@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../screens/splash/cinematic_splash_screen.dart';
+import '../../screens/onboarding/onboarding_screen.dart';
 import '../../screens/auth/auth_wrapper.dart';
 import '../../screens/auth/login_screen.dart';
 import '../../screens/auth/register_screen.dart';
@@ -20,7 +21,8 @@ final appRouter = GoRouter(
     final user = FirebaseAuth.instance.currentUser;
     final isAuthRoute = state.matchedLocation == '/login' ||
         state.matchedLocation == '/register' ||
-        state.matchedLocation == '/splash';
+        state.matchedLocation == '/splash' ||
+        state.matchedLocation == '/onboarding';
 
     if (user == null && !isAuthRoute) {
       return '/login';
@@ -34,6 +36,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: '/splash',
       builder: (context, state) => const CinematicSplashScreen(),
+    ),
+    GoRoute(
+      path: '/onboarding',
+      builder: (context, state) => const OnboardingScreen(),
     ),
     GoRoute(
       path: '/',

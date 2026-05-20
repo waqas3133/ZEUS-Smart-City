@@ -213,14 +213,14 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           border: 1,
                           linearGradient: LinearGradient(
                             colors: [
-                              const Color(0xFF00E5FF).withOpacity(0.3),
-                              const Color(0xFF00E5FF).withOpacity(0.1),
+                              const Color(0xFF00E5FF).withValues(alpha: 0.3),
+                              const Color(0xFF00E5FF).withValues(alpha: 0.1),
                             ],
                           ),
                           borderGradient: LinearGradient(
                             colors: [
                               const Color(0xFF00E5FF),
-                              Colors.white.withOpacity(0.1),
+                              Colors.white.withValues(alpha: 0.1),
                             ],
                           ),
                           child: InkWell(

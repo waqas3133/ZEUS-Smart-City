@@ -46,14 +46,14 @@ class _EmergencyRouteWidgetState extends State<EmergencyRouteWidget> with Single
       border: 1,
       linearGradient: LinearGradient(
         colors: [
-          Colors.black.withOpacity(0.85),
-          Colors.black.withOpacity(0.65),
+          Colors.black.withValues(alpha: 0.85),
+          Colors.black.withValues(alpha: 0.65),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
-          const Color(0xFFFF007F).withOpacity(0.3),
-          Colors.white.withOpacity(0.1),
+          const Color(0xFFFF007F).withValues(alpha: 0.3),
+          Colors.white.withValues(alpha: 0.1),
         ],
       ),
       child: Padding(
@@ -104,7 +104,7 @@ class _EmergencyRouteWidgetState extends State<EmergencyRouteWidget> with Single
                         width: 46,
                         height: 46,
                         decoration: BoxDecoration(
-                          color: colorVal?.withOpacity(0.15),
+                          color: colorVal?.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: colorVal ?? Colors.white24, width: 2),
                         ),
@@ -137,9 +137,9 @@ class _EmergencyRouteWidgetState extends State<EmergencyRouteWidget> with Single
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.5),
+                  color: Colors.black.withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.white.withOpacity(0.08)),
+                  border: Border.all(color: Colors.white.withValues(alpha: 0.08)),
                 ),
                 child: widget.logs.isEmpty
                     ? const Center(

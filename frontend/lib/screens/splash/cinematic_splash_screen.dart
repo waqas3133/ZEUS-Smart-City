@@ -38,7 +38,7 @@ class _CinematicSplashScreenState extends State<CinematicSplashScreen> with Sing
   void _navigateToDashboard() async {
     await Future.delayed(const Duration(milliseconds: 4000));
     if (mounted) {
-      context.go('/'); // Routes to AuthWrapper gateway
+      context.go('/onboarding'); // Routes to Cinematic Onboarding
     }
   }
 
@@ -90,7 +90,7 @@ class _CinematicSplashScreenState extends State<CinematicSplashScreen> with Sing
                             padding: const EdgeInsets.all(24),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: PremiumTheme.neonCyan.withOpacity(0.15),
+                              color: PremiumTheme.neonCyan.withValues(alpha: 0.15),
                               border: Border.all(color: PremiumTheme.neonCyan, width: 2),
                             ),
                             child: ClipOval(
@@ -164,7 +164,7 @@ class _RainParticlePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = PremiumTheme.neonCyan.withOpacity(0.15)
+      ..color = PremiumTheme.neonCyan.withValues(alpha: 0.15)
       ..strokeWidth = 1.0;
     
     // Draw 30 tactical rain line particles

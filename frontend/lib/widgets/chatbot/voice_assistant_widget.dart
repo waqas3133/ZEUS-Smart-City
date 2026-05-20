@@ -74,14 +74,14 @@ class _VoiceAssistantWidgetState extends State<VoiceAssistantWidget> with Single
       border: 1.5,
       linearGradient: LinearGradient(
         colors: [
-          Colors.black.withOpacity(0.9),
-          Colors.black.withOpacity(0.7),
+          Colors.black.withValues(alpha: 0.9),
+          Colors.black.withValues(alpha: 0.7),
         ],
       ),
       borderGradient: LinearGradient(
         colors: [
-          const Color(0xFF00E5FF).withOpacity(0.3),
-          Colors.white.withOpacity(0.1),
+          const Color(0xFF00E5FF).withValues(alpha: 0.3),
+          Colors.white.withValues(alpha: 0.1),
         ],
       ),
       child: Padding(

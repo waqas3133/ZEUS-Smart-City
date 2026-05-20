@@ -35,7 +35,7 @@ class ImagePreviewWidget extends StatelessWidget {
       return Container(
         height: 200,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.02),
+          color: Colors.white.withValues(alpha: 0.02),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.white10),
         ),
@@ -65,7 +65,7 @@ class ImagePreviewWidget extends StatelessWidget {
         border: Border.all(color: borderColor, width: 2),
         boxShadow: [
           BoxShadow(
-            color: borderColor.withOpacity(0.2),
+            color: borderColor.withValues(alpha: 0.2),
             blurRadius: 12,
             spreadRadius: 2,
           ),
@@ -99,7 +99,7 @@ class ImagePreviewWidget extends StatelessWidget {
                 onTap: onClear,
                 child: CircleAvatar(
                   radius: 16,
-                  backgroundColor: Colors.black.withOpacity(0.6),
+                  backgroundColor: Colors.black.withValues(alpha: 0.6),
                   child: const Icon(Icons.close, color: Colors.white, size: 16),
                 ),
               ),
@@ -117,14 +117,14 @@ class ImagePreviewWidget extends StatelessWidget {
                   border: 1,
                   linearGradient: LinearGradient(
                     colors: [
-                      Colors.black.withOpacity(0.8),
-                      Colors.black.withOpacity(0.6),
+                      Colors.black.withValues(alpha: 0.8),
+                      Colors.black.withValues(alpha: 0.6),
                     ],
                   ),
                   borderGradient: LinearGradient(
                     colors: [
                       borderColor,
-                      Colors.white.withOpacity(0.1),
+                      Colors.white.withValues(alpha: 0.1),
                     ],
                   ),
                   child: Center(

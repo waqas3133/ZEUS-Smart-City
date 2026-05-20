@@ -143,7 +143,7 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
             circleId: const CircleId('flood_radar_geofence'),
             center: hazardPos,
             radius: 350,
-            fillColor: const Color(0xFFFF007F).withOpacity(0.18),
+            fillColor: const Color(0xFFFF007F).withValues(alpha: 0.18),
             strokeColor: const Color(0xFFFF007F),
             strokeWidth: 2,
           ),
@@ -239,14 +239,14 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
               border: 1,
               linearGradient: LinearGradient(
                 colors: [
-                  Colors.black.withOpacity(0.6),
-                  Colors.black.withOpacity(0.4),
+                  Colors.black.withValues(alpha: 0.6),
+                  Colors.black.withValues(alpha: 0.4),
                 ],
               ),
               borderGradient: LinearGradient(
                 colors: [
-                  const Color(0xFF00E5FF).withOpacity(0.3),
-                  Colors.white.withOpacity(0.1),
+                  const Color(0xFF00E5FF).withValues(alpha: 0.3),
+                  Colors.white.withValues(alpha: 0.1),
                 ],
               ),
               child: Padding(
@@ -311,14 +311,14 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
               border: 1,
               linearGradient: LinearGradient(
                 colors: [
-                  Colors.black.withOpacity(0.75),
-                  Colors.black.withOpacity(0.55),
+                  Colors.black.withValues(alpha: 0.75),
+                  Colors.black.withValues(alpha: 0.55),
                 ],
               ),
               borderGradient: LinearGradient(
                 colors: [
-                  const Color(0xFFFF007F).withOpacity(0.3),
-                  const Color(0xFF00E5FF).withOpacity(0.2),
+                  const Color(0xFFFF007F).withValues(alpha: 0.3),
+                  const Color(0xFF00E5FF).withValues(alpha: 0.2),
                 ],
               ),
               child: Padding(
@@ -331,7 +331,7 @@ class _LiveMapScreenState extends ConsumerState<LiveMapScreen> {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFFF007F).withOpacity(0.2),
+                            color: const Color(0xFFFF007F).withValues(alpha: 0.2),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: const Color(0xFFFF007F)),
                           ),

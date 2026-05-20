@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import '../../services/notifications/notification_service.dart';
 
 class NotificationSettingsScreen extends ConsumerStatefulWidget {
   const NotificationSettingsScreen({super.key});
@@ -84,14 +83,14 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
                 border: 1.5,
                 linearGradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.03),
-                    Colors.white.withOpacity(0.01),
+                    Colors.white.withValues(alpha: 0.03),
+                    Colors.white.withValues(alpha: 0.01),
                   ],
                 ),
                 borderGradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.15),
-                    Colors.white.withOpacity(0.02),
+                    Colors.white.withValues(alpha: 0.15),
+                    Colors.white.withValues(alpha: 0.02),
                   ],
                 ),
                 child: Padding(
@@ -160,14 +159,14 @@ class _NotificationSettingsScreenState extends ConsumerState<NotificationSetting
                 border: 1.5,
                 linearGradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.03),
-                    Colors.white.withOpacity(0.01),
+                    Colors.white.withValues(alpha: 0.03),
+                    Colors.white.withValues(alpha: 0.01),
                   ],
                 ),
                 borderGradient: LinearGradient(
                   colors: [
-                    Colors.white.withOpacity(0.15),
-                    Colors.white.withOpacity(0.02),
+                    Colors.white.withValues(alpha: 0.15),
+                    Colors.white.withValues(alpha: 0.02),
                   ],
                 ),
                 child: Padding(

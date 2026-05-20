@@ -71,7 +71,7 @@ class _AiAnalysisAnimationState extends State<AiAnalysisAnimation> with SingleTi
                     color: const Color(0xFF00E5FF),
                     boxShadow: [
                       BoxShadow(
-                        color: const Color(0xFF00E5FF).withOpacity(0.8),
+                        color: const Color(0xFF00E5FF).withValues(alpha: 0.8),
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),

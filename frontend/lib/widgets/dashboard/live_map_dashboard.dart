@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class LiveMapDashboard extends StatelessWidget {
   const LiveMapDashboard({super.key});
@@ -75,7 +74,7 @@ class LiveMapDashboard extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.6),
+                color: Colors.black.withValues(alpha: 0.6),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: const Color(0xFF00E5FF), width: 1),
               ),
@@ -103,7 +102,7 @@ class LiveMapDashboard extends StatelessWidget {
           width: 10,
           height: 10,
           decoration: BoxDecoration(
-            color: color.withOpacity(0.2),
+            color: color.withValues(alpha: 0.2),
             shape: BoxShape.circle,
             border: Border.all(color: color, width: 2),
           ),

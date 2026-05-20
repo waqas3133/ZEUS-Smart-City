@@ -72,7 +72,7 @@ class _PulsingGlowWidgetState extends State<_PulsingGlowWidget> with SingleTicke
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
-                color: widget.glowColor.withOpacity(0.35),
+                color: widget.glowColor.withValues(alpha: 0.35),
                 blurRadius: _glowAnimation.value,
                 spreadRadius: _glowAnimation.value / 2,
               )

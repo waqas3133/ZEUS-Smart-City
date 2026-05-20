@@ -21,7 +21,7 @@ class _LocationPermissionScreenState extends ConsumerState<LocationPermissionScr
 
     // Watch status and navigate to map/dashboard if location is successfully detected
     ref.listen(locationProvider, (previous, next) {
-      if (next?.status == LocationStatus.success) {
+      if (next.status == LocationStatus.success) {
         context.go('/dashboard');
       }
     });
@@ -94,14 +94,14 @@ class _LocationPermissionScreenState extends ConsumerState<LocationPermissionScr
                       border: 2,
                       linearGradient: LinearGradient(
                         colors: [
-                          Colors.white.withOpacity(0.05),
-                          Colors.white.withOpacity(0.02),
+                          Colors.white.withValues(alpha: 0.05),
+                          Colors.white.withValues(alpha: 0.02),
                         ],
                       ),
                       borderGradient: LinearGradient(
                         colors: [
-                          const Color(0xFF00E5FF).withOpacity(0.2),
-                          const Color(0xFFFF007F).withOpacity(0.1),
+                          const Color(0xFF00E5FF).withValues(alpha: 0.2),
+                          const Color(0xFFFF007F).withValues(alpha: 0.1),
                         ],
                       ),
                       child: Padding(
@@ -148,7 +148,7 @@ class _LocationPermissionScreenState extends ConsumerState<LocationPermissionScr
                                   labelStyle: const TextStyle(color: Colors.white70),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Colors.white.withOpacity(0.3),
+                                      color: Colors.white.withValues(alpha: 0.3),
                                     ),
                                     borderRadius: BorderRadius.circular(12),
                                   ),

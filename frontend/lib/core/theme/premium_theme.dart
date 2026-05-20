@@ -32,7 +32,7 @@ class PremiumTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.white.withOpacity(0.02),
+        fillColor: Colors.white.withValues(alpha: 0.02),
         labelStyle: const TextStyle(color: Colors.white38, fontSize: 12),
         prefixIconColor: neonCyan,
         enabledBorder: OutlineInputBorder(
@@ -58,7 +58,7 @@ class PremiumTheme {
     double radius = 20,
   }) {
     return BoxDecoration(
-      color: Colors.white.withOpacity(0.02),
+      color: Colors.white.withValues(alpha: 0.02),
       borderRadius: BorderRadius.circular(radius),
       border: Border.all(color: borderColor, width: 1.5),
     );

@@ -107,14 +107,14 @@ class AlertCenterScreen extends ConsumerWidget {
                           border: 1,
                           linearGradient: LinearGradient(
                             colors: [
-                              Colors.white.withOpacity(0.03),
-                              Colors.white.withOpacity(0.01),
+                              Colors.white.withValues(alpha: 0.03),
+                              Colors.white.withValues(alpha: 0.01),
                             ],
                           ),
                           borderGradient: LinearGradient(
                             colors: [
-                              severityColor.withOpacity(0.4),
-                              Colors.white.withOpacity(0.02),
+                              severityColor.withValues(alpha: 0.4),
+                              Colors.white.withValues(alpha: 0.02),
                             ],
                           ),
                           child: Padding(

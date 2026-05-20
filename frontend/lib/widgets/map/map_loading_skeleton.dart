@@ -76,15 +76,15 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                     width: 90,
                     height: 90,
                     decoration: BoxDecoration(
-                      color: PremiumTheme.neonCyan.withOpacity(0.05),
+                      color: PremiumTheme.neonCyan.withValues(alpha: 0.05),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: PremiumTheme.neonCyan.withOpacity(_pulseAnimation.value),
+                        color: PremiumTheme.neonCyan.withValues(alpha: _pulseAnimation.value),
                         width: 2,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: PremiumTheme.neonCyan.withOpacity(_pulseAnimation.value * 0.3),
+                          color: PremiumTheme.neonCyan.withValues(alpha: _pulseAnimation.value * 0.3),
                           blurRadius: 20,
                           spreadRadius: 2,
                         ),
@@ -92,7 +92,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                     ),
                     child: Icon(
                       Icons.map_outlined,
-                      color: PremiumTheme.neonCyan.withOpacity(_pulseAnimation.value + 0.3),
+                      color: PremiumTheme.neonCyan.withValues(alpha: _pulseAnimation.value + 0.3),
                       size: 40,
                     ),
                   ),
@@ -108,7 +108,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                       letterSpacing: 3,
                       shadows: [
                         Shadow(
-                          color: PremiumTheme.neonCyan.withOpacity(0.6),
+                          color: PremiumTheme.neonCyan.withValues(alpha: 0.6),
                           blurRadius: 10,
                         ),
                       ],
@@ -120,7 +120,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                   Text(
                     'Connecting to Google Maps Satellite Feed...',
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.5),
+                      color: Colors.white.withValues(alpha: 0.5),
                       fontSize: 12,
                       letterSpacing: 0.5,
                     ),
@@ -144,7 +144,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                           borderRadius: BorderRadius.circular(2),
                           boxShadow: [
                             BoxShadow(
-                              color: PremiumTheme.neonCyan.withOpacity(0.8),
+                              color: PremiumTheme.neonCyan.withValues(alpha: 0.8),
                               blurRadius: 8,
                             ),
                           ],
@@ -180,12 +180,12 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
             padding: const EdgeInsets.all(32),
             constraints: const BoxConstraints(maxWidth: 480),
             decoration: BoxDecoration(
-              color: PremiumTheme.deepSpaceBlue.withOpacity(0.9),
+              color: PremiumTheme.deepSpaceBlue.withValues(alpha: 0.9),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: PremiumTheme.neonPink.withOpacity(0.4), width: 1.5),
+              border: Border.all(color: PremiumTheme.neonPink.withValues(alpha: 0.4), width: 1.5),
               boxShadow: [
                 BoxShadow(
-                  color: PremiumTheme.neonPink.withOpacity(0.15),
+                  color: PremiumTheme.neonPink.withValues(alpha: 0.15),
                   blurRadius: 30,
                   spreadRadius: 2,
                 ),
@@ -199,7 +199,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                   width: 70,
                   height: 70,
                   decoration: BoxDecoration(
-                    color: PremiumTheme.neonPink.withOpacity(0.1),
+                    color: PremiumTheme.neonPink.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                     border: Border.all(color: PremiumTheme.neonPink, width: 2),
                   ),
@@ -241,7 +241,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.4),
+                    color: Colors.black.withValues(alpha: 0.4),
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.white10),
                   ),
@@ -263,7 +263,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                         'State: undefined (loading error or timeout)\n'
                         'Compatibility Mode: HTML/CanvasKit Fallback Active',
                         style: TextStyle(
-                          color: Colors.white.withOpacity(0.6),
+                          color: Colors.white.withValues(alpha: 0.6),
                           fontSize: 11,
                           fontFamily: 'monospace',
                           height: 1.4,
@@ -285,7 +285,7 @@ class _MapLoadingSkeletonState extends State<MapLoadingSkeleton> with SingleTick
                       borderRadius: BorderRadius.circular(16),
                       side: const BorderSide(color: PremiumTheme.neonCyan, width: 1.5),
                     ),
-                    shadowColor: PremiumTheme.neonCyan.withOpacity(0.4),
+                    shadowColor: PremiumTheme.neonCyan.withValues(alpha: 0.4),
                     elevation: 5,
                   ),
                   icon: const Icon(Icons.refresh_rounded, size: 20),

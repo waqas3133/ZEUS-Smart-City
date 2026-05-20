@@ -73,14 +73,14 @@ class AiMessageBubble extends StatelessWidget {
           border: 1.5,
           linearGradient: LinearGradient(
             colors: [
-              Colors.black.withOpacity(0.8),
-              Colors.black.withOpacity(0.6),
+              Colors.black.withValues(alpha: 0.8),
+              Colors.black.withValues(alpha: 0.6),
             ],
           ),
           borderGradient: LinearGradient(
             colors: [
-              hasRisk ? const Color(0xFFFF007F) : const Color(0xFF00E5FF).withOpacity(0.3),
-              Colors.white.withOpacity(0.1),
+              hasRisk ? const Color(0xFFFF007F) : const Color(0xFF00E5FF).withValues(alpha: 0.3),
+              Colors.white.withValues(alpha: 0.1),
             ],
           ),
           child: Padding(
@@ -95,7 +95,7 @@ class AiMessageBubble extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                         decoration: BoxDecoration(
-                          color: riskColor.withOpacity(0.2),
+                          color: riskColor.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(6),
                           border: Border.all(color: riskColor),
                         ),

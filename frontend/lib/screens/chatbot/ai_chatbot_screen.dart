@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:dio/dio.dart';
-import 'dart:convert';
 import 'dart:developer' as developer;
 import '../../core/constants/api_constants.dart';
 import '../../providers/demo_playbook_provider.dart';
@@ -39,7 +38,6 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
   final String _sessionId = "session_${DateTime.now().millisecondsSinceEpoch}";
 
   bool _isLoading = false;
-  bool _isVoiceSheetOpen = false;
   bool _isTTSPlaying = false;
 
   final List<String> _suggestions = [
@@ -155,10 +153,6 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
   }
 
   void _openVoiceAssistant() {
-    setState(() {
-      _isVoiceSheetOpen = true;
-    });
-
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -168,7 +162,6 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
           onVoiceQuery: (recognizedText) {
             Navigator.of(context).pop();
             setState(() {
-              _isVoiceSheetOpen = false;
               _isTTSPlaying = true;
             });
             _sendMessage(recognizedText);
@@ -181,11 +174,7 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
           },
         );
       },
-    ).then((_) {
-      setState(() {
-        _isVoiceSheetOpen = false;
-      });
-    });
+    );
   }
 
   void _startPlaybookAutoChat() async {
@@ -218,13 +207,13 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
   @override
   Widget build(BuildContext context) {
     ref.listen(demoPlaybookProvider, (previous, next) {
-      if (next?.currentStepIndex == 2) {
+      if (next.currentStepIndex == 2) {
         _startPlaybookAutoChat();
       }
     });
 
     return Scaffold(
-      backgroundColor: const Color(0xd1117ff), // Dark space blue
+      backgroundColor: const Color(0xFF0D1117), // Dark space blue
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -330,7 +319,7 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
                           margin: const EdgeInsets.only(right: 8),
                           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.05),
+                            color: Colors.white.withValues(alpha: 0.05),
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(color: Colors.white12),
                           ),
@@ -355,7 +344,7 @@ class _AiChatbotScreenState extends ConsumerState<AiChatbotScreen> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.05),
+                        color: Colors.white.withValues(alpha: 0.05),
                         borderRadius: BorderRadius.circular(24),
                         border: Border.all(color: Colors.white12),
                       ),

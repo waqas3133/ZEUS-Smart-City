@@ -16,7 +16,7 @@ class AppTheme {
       ),
       // Glassmorphism default card behavior simulated via transparent colors
       cardTheme: CardThemeData(
-        color: Colors.white.withOpacity(0.05),
+        color: Colors.white.withValues(alpha: 0.05),
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),

@@ -116,7 +116,7 @@ class _SmartMapScreenState extends ConsumerState<SmartMapScreen> {
           circleId: const CircleId('flood_zone_1'),
           center: const LatLng(33.6980, 73.0610),
           radius: 400,
-          fillColor: const Color(0xFFFF007F).withOpacity(0.2),
+          fillColor: const Color(0xFFFF007F).withValues(alpha: 0.2),
           strokeColor: const Color(0xFFFF007F),
           strokeWidth: 2,
         ),
@@ -128,7 +128,7 @@ class _SmartMapScreenState extends ConsumerState<SmartMapScreen> {
           circleId: const CircleId('block_zone_1'),
           center: const LatLng(33.7130, 73.0780),
           radius: 300,
-          fillColor: Colors.orangeAccent.withOpacity(0.2),
+          fillColor: Colors.orangeAccent.withValues(alpha: 0.2),
           strokeColor: Colors.orangeAccent,
           strokeWidth: 2,
         ),
@@ -288,7 +288,7 @@ class _SmartMapScreenState extends ConsumerState<SmartMapScreen> {
   Widget build(BuildContext context) {
     final mapLoadStatus = ref.watch(googleMapsLoaderProvider);
     ref.listen(demoPlaybookProvider, (previous, next) {
-      if (next?.currentStepIndex == 3) {
+      if (next.currentStepIndex == 3) {
         if (!_isSimulating) {
           // Add a tiny delay to let screen transition finish
           Future.delayed(const Duration(milliseconds: 1000), () {

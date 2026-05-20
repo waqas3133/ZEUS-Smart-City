@@ -40,6 +40,7 @@ class ZeusApp extends StatelessWidget {
       builder: (context, child) {
         return Stack(
           children: [
+            // ignore: use_null_aware_elements
             if (child != null) child,
             const HackathonDemoOverlay(),
           ],

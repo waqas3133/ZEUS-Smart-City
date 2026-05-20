@@ -4,7 +4,6 @@ import 'package:glassmorphism/glassmorphism.dart';
 import 'package:go_router/go_router.dart';
 import '../../providers/auth_provider.dart';
 import '../../services/notifications/notification_service.dart';
-import 'register_screen.dart';
 import 'dart:developer' as developer;
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -181,14 +180,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           border: 1,
                           linearGradient: LinearGradient(
                             colors: [
-                              const Color(0xFF00E5FF).withOpacity(0.3),
-                              const Color(0xFF00E5FF).withOpacity(0.1),
+                              const Color(0xFF00E5FF).withValues(alpha: 0.3),
+                              const Color(0xFF00E5FF).withValues(alpha: 0.1),
                             ],
                           ),
                           borderGradient: LinearGradient(
                             colors: [
                               const Color(0xFF00E5FF),
-                              Colors.white.withOpacity(0.1),
+                              Colors.white.withValues(alpha: 0.1),
                             ],
                           ),
                           child: InkWell(

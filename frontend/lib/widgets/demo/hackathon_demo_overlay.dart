@@ -72,14 +72,14 @@ class _HackathonDemoOverlayState extends ConsumerState<HackathonDemoOverlay> wit
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              const Color(0xFF0F172A).withOpacity(0.9),
-              const Color(0xFF020617).withOpacity(0.95),
+              const Color(0xFF0F172A).withValues(alpha: 0.9),
+              const Color(0xFF020617).withValues(alpha: 0.95),
             ],
           ),
           borderGradient: LinearGradient(
             colors: [
-              const Color(0xFF00E5FF).withOpacity(0.4),
-              const Color(0xFFFF007F).withOpacity(0.2),
+              const Color(0xFF00E5FF).withValues(alpha: 0.4),
+              const Color(0xFFFF007F).withValues(alpha: 0.2),
             ],
           ),
           child: Column(
@@ -101,8 +101,8 @@ class _HackathonDemoOverlayState extends ConsumerState<HackathonDemoOverlay> wit
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: playbookState.isPlaying
-                                    ? Colors.greenAccent.withOpacity(0.3 + (_pulseController.value * 0.7))
-                                    : Colors.orangeAccent.withOpacity(0.3 + (_pulseController.value * 0.7)),
+                                    ? Colors.greenAccent.withValues(alpha: 0.3 + (_pulseController.value * 0.7))
+                                    : Colors.orangeAccent.withValues(alpha: 0.3 + (_pulseController.value * 0.7)),
                                 boxShadow: [
                                   BoxShadow(
                                     color: playbookState.isPlaying ? Colors.greenAccent : Colors.orangeAccent,
@@ -232,7 +232,7 @@ class _HackathonDemoOverlayState extends ConsumerState<HackathonDemoOverlay> wit
                     TextButton(
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
-                        backgroundColor: Colors.white.withOpacity(0.05),
+                        backgroundColor: Colors.white.withValues(alpha: 0.05),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       ),
                       onPressed: notifier.resetPlaybook,
@@ -262,8 +262,8 @@ class _HackathonDemoOverlayState extends ConsumerState<HackathonDemoOverlay> wit
         border: 1.5,
         linearGradient: LinearGradient(
           colors: [
-            const Color(0xFF0F172A).withOpacity(0.9),
-            const Color(0xFF020617).withOpacity(0.95),
+            const Color(0xFF0F172A).withValues(alpha: 0.9),
+            const Color(0xFF020617).withValues(alpha: 0.95),
           ],
         ),
         borderGradient: const LinearGradient(
@@ -302,7 +302,7 @@ class _HackathonDemoOverlayState extends ConsumerState<HackathonDemoOverlay> wit
           ),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF00E5FF).withOpacity(0.5),
+              color: const Color(0xFF00E5FF).withValues(alpha: 0.5),
               blurRadius: 10,
               spreadRadius: 2,
             )

@@ -41,7 +41,7 @@ class HomeDashboard extends StatelessWidget {
                         Text(
                           'WELCOME BACK,',
                           style: TextStyle(
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withValues(alpha: 0.5),
                             fontSize: 10,
                             fontWeight: FontWeight.bold,
                             letterSpacing: 2.0,
@@ -92,14 +92,14 @@ class HomeDashboard extends StatelessWidget {
                   border: 1.5,
                   linearGradient: LinearGradient(
                     colors: [
-                      Colors.white.withOpacity(0.04),
-                      Colors.white.withOpacity(0.01),
+                      Colors.white.withValues(alpha: 0.04),
+                      Colors.white.withValues(alpha: 0.01),
                     ],
                   ),
                   borderGradient: LinearGradient(
                     colors: [
-                      const Color(0xFF00E5FF).withOpacity(0.3),
-                      Colors.white.withOpacity(0.05),
+                      const Color(0xFF00E5FF).withValues(alpha: 0.3),
+                      Colors.white.withValues(alpha: 0.05),
                     ],
                   ),
                   child: const Padding(
@@ -239,14 +239,14 @@ class HomeDashboard extends StatelessWidget {
         border: 1,
         linearGradient: LinearGradient(
           colors: [
-            Colors.white.withOpacity(0.04),
-            Colors.white.withOpacity(0.01),
+            Colors.white.withValues(alpha: 0.04),
+            Colors.white.withValues(alpha: 0.01),
           ],
         ),
         borderGradient: LinearGradient(
           colors: [
-            Colors.white.withOpacity(0.1),
-            Colors.white.withOpacity(0.02),
+            Colors.white.withValues(alpha: 0.1),
+            Colors.white.withValues(alpha: 0.02),
           ],
         ),
         child: Padding(
@@ -258,7 +258,7 @@ class HomeDashboard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(icon, color: color, size: 24),
@@ -278,7 +278,7 @@ class HomeDashboard extends StatelessWidget {
                   Text(
                     subtitle,
                     style: TextStyle(
-                      color: Colors.white.withOpacity(0.4),
+                      color: Colors.white.withValues(alpha: 0.4),
                       fontSize: 9,
                     ),
                   ),
